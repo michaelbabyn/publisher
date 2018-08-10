@@ -3,8 +3,9 @@ from IPython.nbconvert import HTMLExporter
 import json
 import os
 import warnings
+import datetime
 
-
+DATE = datetime.datetime.now().strftime('%Y-%m-%d')
 DEFAULT_THUMBNAIL_URL = '/images/static-image'
 
 
@@ -95,7 +96,7 @@ def publish(notebook_name, url_path, page_title, page_description,
     kwargs.setdefault('page_type', 'u-guide')
     kwargs.setdefault('language', 'python')
 
-    with open('2015-06-30-' + fn.replace('.ipynb', '.html'), 'w') as f:
+    with open('{}-'.format(DATE) + fn.replace('.ipynb', '.html'), 'w') as f:
         f.write('\n'.join([''
                            '---',
                            'permalink: ' + url_path,
